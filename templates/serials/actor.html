@@ -1,0 +1,53 @@
+{% extends 'serials/base.html' %}
+
+{% load static %}
+
+{% block banner %}bg3 {% endblock banner %}
+
+{% block container %}
+    <div class="container py-md-3">
+{% endblock container %}
+
+{% block sidebar %}
+    <div class="side-bar col-lg-3">
+        {% include 'include/sidebar.html' %}
+    </div>
+{% endblock sidebar %}
+
+{% block serial %}
+    <div class="left-ads-display col-lg-8">
+        <div class="row">
+            <div class="desc1-left col-md-6">
+                <img src="{{ actor.image.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent">
+                    {{ actor.name }}
+                </h3>
+<!--                <h5 class="editContent">Terminator: Dark Fate</h5>-->
+                <ul>
+                    <li>
+                        <span><b>Возраст:</b> {{ actor.age }} лет </span>
+                    </li>
+                    <li>
+                        <span><b>Актер:</b>
+                            {% for serial in actor.film_actor.all %}
+                                {{ serial.title }}
+                            {% endfor %}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row sub-para-w3layouts mt-5">
+            <h3 class="shop-sing editContent">
+                О {{ actor.name }}
+            </h3>
+            <p class="edtContent">
+                {{ actor.description }}
+            </p>
+        </div>
+
+
+    </div>
+{% endblock serial %}

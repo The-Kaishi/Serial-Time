@@ -1,0 +1,27 @@
+{% extends 'serials/base.html' %}
+
+{% block banner %}bg1{% endblock banner %}
+
+{% block serial %}
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+            {% for serial in serial_list %}
+                <div class="col-md-4 product-men">
+                    <div class="product-shoe-info editContent text-center mt-lg-4">
+                        <div class="men-thumb-item">
+                            <img src="{{ serial.poster.url }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="item-info-product">
+                            <h4 class="">
+                                <a href="{{ serial.get_absolute_url }}" class="editContent">{{ serial.title }}</a>
+                            </h4>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="grid-img-right mt-4 text-right bg bg1" >
+            {% include 'include/pagination.html' %}
+        </div>
+    </div>
+{% endblock serial %}
