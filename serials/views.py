@@ -39,10 +39,6 @@ class SerialDetailView(GenreYear, DetailView):
         context['star_form'] = RatingForm()
         return context
 
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['categories'] = Category.objects.all()
-    #     return context
 
 class AddReview(View):
 
@@ -84,7 +80,7 @@ class FilterSerialsView(GenreYear, ListView):
 
 
 class JsonFilterSerialsView(ListView):
-    """Фильтр фильмов в json"""
+
     def get_queryset(self):
         queryset = Serial.objects.filter(
             Q(year__in=self.request.GET.getlist("year")) |
@@ -123,6 +119,7 @@ class AddStarRating(View):
 class Search(ListView):
 
     paginate_by = 2
+
     def get_queryset(self):
         q = self.request.GET.get('q').capitalize()
         return Serial.objects.filter(title__icontains=q)

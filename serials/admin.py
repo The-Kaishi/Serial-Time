@@ -50,7 +50,6 @@ class SerialAdmin(admin.ModelAdmin):
     save_on_top = True
     save_as = True
     list_editable = ('draft',)
-    #fields = (('actors', 'genres', ), )
     actions = ['publish', 'unpublish']
     form = MovieAdminForm
     readonly_fields = ('get_image',)
@@ -81,7 +80,6 @@ class SerialAdmin(admin.ModelAdmin):
 
     def get_image(self, obj):
         return mark_safe(f"<img src={obj.poster.url} width='140' height='140'")
-
 
     def unpublish(self, request, queryset):
 
@@ -152,8 +150,6 @@ class RatingAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RatingStar)
-#admin.site.register(Rating)
-
 
 admin.site.site_title = 'Serial Time'
 admin.site.site_header = 'Serial Time'
